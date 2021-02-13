@@ -130,7 +130,7 @@ Within Sparkify's file storage, log files are partitioned by the month and year.
 **artists** | Dimension Table; Artists in music database
 **time** | Dimension Table; Timestamps of **songplays** records, broken down into specific units
 
-## Table Schema and samples
+## Fact & Dimension Table Schema and samples
 
 ### Table: songplays
 Cluster distribution: Even<br>
