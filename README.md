@@ -122,6 +122,8 @@ Within Sparkify's file storage, log files are partitioned by the month and year.
 
 **Table Name**  | **Description**
 --------------- | ---------------
+**staging_events** | Staging Table; Full data extraction from JSON event log files.
+**staging_songs** | Staging Table; Full data extraction from JSON song files.
 **songplays** | Fact Table;  Log data associated with song plays, filtered by user action 'Next Song'.
 **users** | Dimension Table; Registered application users
 **songs** | Dimension Table; Songs in music database
@@ -135,7 +137,7 @@ Cluster distribution: Even<br>
 
 **Column name** | **Data type** | **Column description**
 ----------- | --------- | ------------------
-**songplay_id**  | SERIAL | PRIMARY KEY
+**songplay_id**  | SERIAL | NOT NULL
 **start_time** | TIMESTAMP | NOT NULL
 **user_id** | VARCHAR | NOT NULL
 **level** | VARCHAR | NOT NULL
@@ -158,7 +160,7 @@ Cluster distribution: All<br>
 
 **Column name** | **Data type** | **Column description**
 ----------- | --------- | ------------------
-**user_id**  | INT | PRIMARY KEY
+**user_id**  | INT | NOT NULL
 **first_name** | VARCHAR | NOT NULL
 **last_name** | VARCHAR | NOT NULL
 **gender** | VARCHAR |
@@ -177,7 +179,7 @@ Cluster distribution: All<br>
 
 **Column name** | **Data type** | **Column description**
 ----------- | --------- | ------------------
-**song_id**  | VARCHAR | PRIMARY KEY
+**song_id**  | VARCHAR | NOT NULL
 **title** | VARCHAR | NOT NULL
 **artist_id** | VARCHAR |
 **year** | VARCHAR |
@@ -196,7 +198,7 @@ Cluster distribution: All<br>
 
 **Column name** | **Data type** | **Column description**
 --------------- | ------------- | ----------------------
-**artist_id**  | VARCHAR | PRIMARY KEY
+**artist_id**  | VARCHAR | NOT NULL
 **name** | VARCHAR | NOT NULL
 **location** | VARCHAR |
 **latitude** | VARCHAR |
