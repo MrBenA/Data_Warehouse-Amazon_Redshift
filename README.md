@@ -232,3 +232,61 @@ Sample...
 2018-11-21 21:56:47.796000 | 21 | 21 | 47 | 11 | 2018 | 2
 
 ........................................................................................................................
+
+## Analytics of data set
+
+**Table Name** | **Row Count**
+--------------- | -------------
+**staging_events**  | 8056
+**staging_songs**  | 14896
+**songplays**  | 7154
+**users**  | 105
+**songs**  | 14896
+**artists**  | 10025
+**time**  | 7154
+
+### TOP 10 song plays for dataset
+
+    SELECT s.title AS "Song Title", a.name AS "Artist Name", COUNT(*) AS "Song Plays"
+        FROM songplays sp
+        JOIN songs s ON (sp.song_id = s.song_id)
+        JOIN artists a ON (sp.artist_id = a.artist_id)
+        GROUP BY s.title, a.name
+        ORDER BY "Song Plays" DESC
+        LIMIT 10;
+
+**Song Title** | **Artist Name** | **Song Plays**
+--------------- | -------------  | -------------
+You're The One | Dwight Yoakam | 37
+Secrets | Carleen Anderson | 17
+Home | Gemma Hayes | 13
+Home | Frozen Plasma | 13
+Home | Working For A Nuclear Free City | 13
+Home | Eli Young Band | 13
+Catch You Baby (Steve Pitron & Max Sanna Radio Edit) | Lonnie Gordon | 9
+I CAN'T GET STARTED | Ron Carter | 9
+Nothin' On You [feat. Bruno Mars] (Album Version) | B.o.B | 8
+Float On | Rivera Rotation | 7
+
+
+### Most Active Users
+
+    SELECT u.first_name + ' ' + u.last_name AS "User Name", COUNT(*) AS "Songs Listened"
+        FROM songplays sp
+        JOIN users u ON (sp.user_id = u.user_id)
+        GROUP BY "User Name"
+        ORDER BY "Song listened" DESC
+        LIMIT 10;
+
+**User Name** | **Song Listened**
+-------------  | -------------
+Tegan Levine | 1446
+Chloe Cuevas | 1424
+Lily Koch | 952
+Jacqueline Lynch | 726
+Mohammad Rodriguez | 574
+Kate Harrell | 573
+Matthew Jones | 512
+Rylan George | 462
+Aleena Kirby | 413
+Kinsley Young | 368
